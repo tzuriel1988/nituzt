@@ -1,0 +1,14 @@
+﻿<Window x:Class="yad2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:yad2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="525">
+    <Grid>
+        <Button x:Name="button" Content="Existing user" HorizontalAlignment="Left" Margin="196,47,0,0" VerticalAlignment="Top" Width="119" Click="existingUser" Height="30"/>
+        <Button x:Name="button1" Content="New user" HorizontalAlignment="Left" Margin="196,100,0,0" VerticalAlignment="Top" Width="119" Click="newUser" Height="31"/>
+        <Button x:Name="button2" Content="Continue watching" HorizontalAlignment="Left" Margin="196,158,0,0" VerticalAlignment="Top" Width="119" Click="continueWatching" Height="30"/>
+    </Grid>
+</Window>
