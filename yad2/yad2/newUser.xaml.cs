@@ -20,16 +20,14 @@ namespace yad2
     /// </summary>
     public partial class newUser : Window
     {
-       
-        public newUser()
+        MainWindow window;
+        Yad2Entities _db;
+        public newUser(MainWindow win)
         {
             InitializeComponent();
-           
+            window = win;
+            _db = new Yad2Entities();
         }
-
-
-
-       
 
         private void Female_Checked(object sender, RoutedEventArgs e)
         {
@@ -40,59 +38,90 @@ namespace yad2
         {
             Female.IsChecked = false;
         }
-
-        private string realpass = "";
-        private void textBox10_TextChanged(object sender, TextChangedEventArgs e)
-        {
-          //  realpass = textBox10.Text;
-          //  for (int i = 0; i < realpass.Length; i++)
-          //      textBox10.Text += "*";
-        }
-
-
+        
         private void Register(object sender, RoutedEventArgs e)
         {
 
             if (firstName.Text == "" || lastName.Text == "")
                 MessageBox.Show("Please enter your name");
-            else if(Age.Text=="")
+            else if (Age.Text == "")
                 MessageBox.Show("Please enter your age");
-            else if(Convert.ToInt32(Age.Text)<0 || Convert.ToInt32(Age.Text)>121 )
+            else if (Convert.ToInt32(Age.Text) < 0 || Convert.ToInt32(Age.Text) > 121)
                 MessageBox.Show("invalied age (must be between 0 and 120)");
-            else if(Male.IsChecked==false&& Female.IsChecked==false)
+            else if (Male.IsChecked == false && Female.IsChecked == false)
                 MessageBox.Show("Please select a gender");
-            else if(email.Text=="")
+            else if (email.Text == "")
                 MessageBox.Show("Please enter your email");
             else if (pass.Password == "" || pass2.Password == "")
                 MessageBox.Show("Please enter your password and password validation");
             else if (pass.Password != pass2.Password)
                 MessageBox.Show("the validation does not match the password");
+            else
+            {
+                var users = (from u in _db.Users
+                             where u.Email == email.Text
+                             select new
+                             {
+                                 u.Password,
+                                 u.FirstName,
+                                 u.LastName
+                             });
+                if (users.Count() != 0)
+                    MessageBox.Show("This E-Mail allready registered");
 
-            sendMail(email.Text);
+                else
+                {
+                    try
+                    {
+                        MailAddress mail = new MailAddress(email.Text);
+                        sendMail(mail, firstName.Text + " " + lastName.Text);
+                        window.HelloUser.Text = "Hello " + firstName.Text + " " + lastName.Text;
+                        User newUser = new User();
+                        newUser.Email = email.Text;
+                        newUser.Password = pass.Password.Trim();
+                        newUser.FirstName = firstName.Text.Trim();
+                        newUser.LastName = lastName.Text.Trim();
+                        newUser.Age = Convert.ToInt32(Age.Text.Trim());
+                        bool isMale = false;
+                        if (Female.IsChecked.Value) isMale = true;
+                        newUser.Gender = isMale;
+                        _db.Users.Add(newUser);
+                        _db.SaveChanges();
+                        MessageBox.Show("Registration completed!");
+                        Close();
 
 
-
-
-
-
+                    }
+                    catch
+                    {
+                        MessageBox.Show("The given e-mail address is not in the form required for an e-mail address.");
+                    }
+                }
+            }
                 
         }
 
         
-        private void sendMail(string userMail)
+        private void sendMail(MailAddress userMail,string userName)
         {
-            MailMessage mail = new MailMessage("partnermatcheryad2@gmail.com", userMail);
-            SmtpClient client = new SmtpClient();
-            client.Port = 25;
-            client.DeliveryMethod = SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-            client.Host = "smtp.gmail.com";
-            client.Credentials = new System.Net.NetworkCredential("partnermatcheryad2@gmail.com", "olla123456");
-            client.EnableSsl = true;
+            try
+            {
+                MailMessage mail = new MailMessage(new MailAddress("partnermatcheryad2@gmail.com"), userMail);
+                SmtpClient client = new SmtpClient();
+                client.Port = 587;
+                client.Host = "smtp.gmail.com";
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                client.Credentials = new System.Net.NetworkCredential("partnermatcheryad2@gmail.com", "olla123456");
+                client.EnableSsl = true;
 
-            mail.Subject = "Registration for PartnerMatcher";
-            mail.Body = "Welcome to PartnerMatcher, We're glad to have you aboard";
-            client.Send(mail);
+                mail.Subject = "Registration for PartnersMatcher";
+                mail.Body ="Hello "+ userName+ "! \nWelcome to PartnersMatcher, We're glad to have you aboard.";
+                client.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
 
         }
 

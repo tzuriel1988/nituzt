@@ -5,12 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:yad2"
         mc:Ignorable="d"
-        Title="existingUser" Height="200" Width="400">
-    <Grid>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="19" Margin="98,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254"/>
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="19" Margin="98,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="21,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23"><Run Text="Username"/><Run FlowDirection="RightToLeft" Text=":"/></TextBlock>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="21,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="82"><Run FlowDirection="RightToLeft" Text="P"/><Run Text="assword:"/></TextBlock>
-        <Button x:Name="button" Content="Log in" HorizontalAlignment="Left" Margin="152,131,0,0" VerticalAlignment="Top" Width="119" Click="LogIn" Height="30"/>
+        Title="Sign in" Height="210.976" Width="400"  ResizeMode="NoResize" >
+    <Grid  Background="SandyBrown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5*" />
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBlock  TextWrapping="Wrap" Grid.ColumnSpan="2" Grid.Column="0"  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13.333" FontWeight="Bold"><Run Text="Sign in" Foreground="DimGray" FontSize="36" /></TextBlock>
+
+        <TextBlock  TextWrapping="Wrap" Grid.Column="0"  Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13.333" FontWeight="Bold"><Run Text="E-Mail:" Foreground="Lavender" /></TextBlock>
+        <TextBox x:Name="mail" TextWrapping="Wrap"   Grid.Column="1" Grid.Row="1" Margin="10,10,10,10"  Foreground="DimGray" />
+        <TextBlock x:Name="textBlock1"  TextWrapping="Wrap" Grid.Column="0"  Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Lavender" Text="Password:" FontSize="13.333" FontWeight="Bold"  ></TextBlock>
+        <PasswordBox x:Name="password" Grid.Column="1" Grid.Row="2" Margin="10,10,10,10" Foreground="DimGray" />
+        <Button x:Name="button" Content="Sign in"  Margin="100,10,100,10"  Click="LogIn" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="3" Background="DimGray" Foreground="Lavender" FontWeight="Bold"/>
     </Grid>
 </Window>

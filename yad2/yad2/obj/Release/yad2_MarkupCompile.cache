@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\yad2\yad2\obj\Debug\
+D:\oll\nituzt\yad2\yad2\obj\Release\
 yad2
 none
 false
-DEBUG;TRACE
-D:\yad2\yad2\App.xaml
+TRACE
+D:\oll\nituzt\yad2\yad2\App.xaml
 31440748453
 31346117188
-181000974142
-18175074074
+14575069349
+181638923874
 existingUser.xaml;MainWindow.xaml;newUser.xaml;
 
 False

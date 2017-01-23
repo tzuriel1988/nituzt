@@ -5,28 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:yad2"
         mc:Ignorable="d"
-        Title="newUser" Height="356" Width="305" ResizeMode="NoResize">
-    <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="21,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" Width="106" FontWeight="Bold" TextDecorations="Underline" FontSize="16"><Run Text="Registration"/><Run FlowDirection="RightToLeft" Text=":"/></TextBlock>
-        <TextBox x:Name="lastName" HorizontalAlignment="Left" Height="19" Margin="83,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="21,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18"><Run Text="First Name"/><Run FlowDirection="RightToLeft" Text=":"/></TextBlock>
-        <TextBox x:Name="firstName" HorizontalAlignment="Left" Height="19" Margin="83,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108"/>
-        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="21,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="62" Text="Last Name:"/>
-        <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="21,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="25" Text="Age:"/>
-        <PasswordBox x:Name="pass2" HorizontalAlignment="Left" Height="19" Margin="161,183,0,0"  VerticalAlignment="Top" Width="104"/>
-        <CheckBox x:Name="Male" Content="Male" HorizontalAlignment="Left" Margin="89,112,0,0" VerticalAlignment="Top" Checked="Male_Checked"/>
-        <CheckBox x:Name="Female" Content="Female" HorizontalAlignment="Left" Margin="151,112,0,0" VerticalAlignment="Top"
-	     Checked="Female_Checked"/>
-        <TextBlock x:Name="textBlock12" HorizontalAlignment="Left" Margin="21,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="55" Text="Password:"/>
-        <TextBlock x:Name="textBlock13" HorizontalAlignment="Left" Margin="21,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="135" Text="Password validation:"/>
-        <TextBox x:Name="Age" HorizontalAlignment="Left" Height="19" Margin="46,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="30" RenderTransformOrigin="0,0.316"  PreviewTextInput="age_PreviewTextInput" />
-        <PasswordBox x:Name="pass" HorizontalAlignment="Left" Height="19" Margin="76,159,0,0"  VerticalAlignment="Top" Width="104" ></PasswordBox>
+        Title="Registration" Height="356" Width="300" ResizeMode="NoResize">
+    <Grid Background="SandyBrown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
 
-        <Button x:Name="button" Content="Register" HorizontalAlignment="Left" Margin="77,227,0,0" VerticalAlignment="Top" Width="65" Click="Register" Height="21"/>
-        <Button x:Name="button1" Content="Cancel" HorizontalAlignment="Left" Margin="151,227,0,0" VerticalAlignment="Top" Width="65" Click="Cencel" Height="21"/>
-        <TextBlock x:Name="textBlock19" HorizontalAlignment="Left" Margin="21,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18"><Run Text="Email:"/><Run FlowDirection="RightToLeft" Text=""/></TextBlock>
-        <TextBox x:Name="email" HorizontalAlignment="Left" Height="19" Margin="57,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
-        <TextBlock x:Name="textBlock9_Copy" HorizontalAlignment="Left" Margin="22,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="59" Text="Gender:"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlock"  TextWrapping="Wrap" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontWeight="Bold"  FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Registration" Foreground="DimGray" FontSize="36"  /></TextBlock>
+        <TextBlock  Grid.Column="0" Grid.Row="1" TextWrapping="Wrap" Text="First Name:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Lavender" FontWeight="Bold" ></TextBlock>
+        <TextBox x:Name="firstName" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Margin=" 5,5,5,5" Foreground="DimGray"/>
+        <TextBlock  Grid.Column="0" Grid.Row="2" TextWrapping="Wrap" Text="Last Name:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Lavender" FontWeight="Bold" ></TextBlock>
+        <TextBox x:Name="lastName" Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Margin=" 5,5,5,5" Foreground="DimGray"  />
+        <TextBlock  Grid.Column="0" Grid.Row="3" TextWrapping="Wrap" Text="Age:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Lavender" FontWeight="Bold" ></TextBlock>
+        <TextBox x:Name="Age" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Margin=" 5,5,5,5" PreviewTextInput="age_PreviewTextInput" Foreground="DimGray" />
+        <TextBlock TextWrapping="Wrap" Grid.Column="0" Grid.Row="4"  Text="Gender:" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Lavender" FontWeight="Bold" />
+        <CheckBox x:Name="Male" Content="Male" Grid.Column="1" Grid.Row="4" Checked="Male_Checked" VerticalAlignment="Center" Foreground="Lavender" FontWeight="Bold" />
+        <CheckBox x:Name="Female" Content="Female" Grid.Column="1" Grid.Row="4" Checked="Female_Checked" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Lavender" FontWeight="Bold" />
+        <TextBlock TextWrapping="Wrap" Grid.Column="0" Grid.Row="5"   Text="Email:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Lavender" FontWeight="Bold" ></TextBlock>
+        <TextBox x:Name="email"  TextWrapping="Wrap" Grid.Column="1" Grid.Row="5"  Margin=" 5,5,5,5" Foreground="DimGray" />
+        <TextBlock TextWrapping="Wrap" Grid.Column="0" Grid.Row="6"   Text="Password:" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Lavender" FontWeight="Bold"  />
+        <PasswordBox x:Name="pass" Grid.Column="1" Grid.Row="6" Margin="5,5,5,5" Foreground="DimGray" ></PasswordBox>
+        <TextBlock TextWrapping="Wrap" Grid.Column="0" Grid.Row="7"  VerticalAlignment="Center" HorizontalAlignment="Center" Text="Confirm Password:" Foreground="Lavender" FontWeight="Bold" />
+        <PasswordBox x:Name="pass2" Grid.Column="1" Grid.Row="7" Margin="5,5,5,5" Foreground="DimGray" />
+
+        <Button x:Name="button" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="8"  Margin="50,5,50,5"  Click="Register" Content="Register"  Background="DimGray" Foreground="Lavender" FontWeight="Bold" />
+        <Button x:Name="button1" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="9"  Margin="50,5,50,5"  Content="Cancel"  Click="Cencel"  Background="DimGray" Foreground="Lavender" FontWeight="Bold" />
 
     </Grid>
 
